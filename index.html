@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>clock</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      .maincont {
+        /* border: 2px solid rgb(25, 0, 255);s */
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+      }
+      .clockcont {
+        /* border: 2px solid red; */
+        background-image: url(clock2.png);
+        box-sizing: border-box;
+        /* width: 95vh; */
+        /* height: 95vh; */
+        width: 97vmin;
+        height: 97vmin;
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+      .hour,
+      .min,
+      .sec {
+        /* border: 2px solid black; */
+        border-radius: 50px 50px 1000% 1000%;
+        background-color: black;
+        position: absolute;
+        padding: 0;
+        transform-origin: top;
+        margin: 0;
+      }
+
+      #hour {
+        /* display: none; */
+        /* background-color: rgb(243, 10, 215); */
+
+        /* width: 1vw; */
+        width: 1.5vmin;
+        height: 21vmin;
+        top: 49.8%;
+        left: 49.5%;
+      }
+
+      #min {
+        /* display: none; */
+        /* background-color: rgb(230, 17, 17); */
+        width: 1vmin;
+        height: 29vmin;
+        top: 49.9%;
+        left: 49.7%;
+      }
+      #sec {
+        /* display: none; */
+        /* background-color: rgb(17, 230, 95); */
+        width: 0.6vmin;
+        height: 28vmin;
+        top: 50%;
+        left: 50%;
+      }
+
+      .dot {
+        position: absolute;
+        padding: 0;
+        margin: 0;
+        color: red;
+        top: calc(50% - 2.5vmin);
+        left: calc(50% - 2.5vmin);
+        background-color: black;
+        width: 5vmin;
+        height: 5vmin;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="maincont">
+      <div class="clockcont">
+        <div class="hour" id="hour"></div>
+        <div class="min" id="min"></div>
+        <div class="sec" id="sec"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+    <!-- <script src="clock.js"></script> -->
+    <script>
+      let hour = document.getElementById("hour");
+      let min = document.getElementById("min");
+      let sec = document.getElementById("sec");
+
+      setInterval(() => {
+        let d = new Date();
+        let htime = d.getHours();
+        let mtime = d.getMinutes();
+        let stime = d.getSeconds();
+
+        let h = 30 * htime + mtime / 2;
+        let m = 6 * mtime;
+        let s = 6 * stime;
+
+        hour.style.transform = `rotate(${h - 180}deg)`;
+        min.style.transform = `rotate(${m - 180}deg)`;
+        sec.style.transform = `rotate(${s - 180}deg)`;
+      }, 1000);
+    </script>
+  </body>
+</html>
